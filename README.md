@@ -24,6 +24,8 @@ This repo hosts resources and codes for EE 595 project "Neuromorphic Computing u
 
 <https://github.com/haebelvarghese/Neuromorphic-Computing-Haebel.git>
 
+### Phase 2 update
+
 ### Abstract
 
 Spiking Neural Networks on neuromorphic hardware have a lot of advantages, hence it is used for efficient implementation of deep neural networks. But as we design more complex deep neural networks, we need to find better methods to reduce the storage size and the time required for computing. In this paper we are using the model compression technique to optimize our SNN. We are hence designing an algorithm-hardware co-optimization framework that will improve the hardware usage and at the same time keep the accuracy of the neural network high.   
