@@ -38,11 +38,12 @@ The team has two groups studying two aspects of the problem: software and hardwa
 
 We have understood the hardware simulator.We have modified the hardware simulator to run the neural network. We need to run the original neural network and compare the results.
 
-###Hardware part
-##Description of the TrueNorth chip
+### Hardware part
+
+## Description of the TrueNorth chip
 The TrueNorth chip was designed by IBM to do neuromorphic computing. The chip follows a spiking neural network approach to do various kinds of deep learning. Using spiking neural networks has a lot of power advantages in hardware. Also the aim of chip is to provide scalable communication techniques among the multiple cores in the chip. The core is the repeating element of the TrueNorth chip. A chip consists of 64 x 64 cores i.e. 4096 cores. The neural network is designed across these cores or maybe even across multiple chips if the network is huge.
 
-##Description of the core
+## Description of the core
 The core is the main working part of the chip. A core has 256 neurons and 256 axons and 256 x 256 synapses. The neurons act as the output or where the computation occurs. The axon acts as the input to which the spike inputs can be given. The synapses refer to the connections between the axons and the neurons. Each synapse can have a weight value as inhibitory or excitatory. 
 
 The neurosynaptic core consists of five parts for its operation:
@@ -52,13 +53,13 @@ The neurosynaptic core consists of five parts for its operation:
 4)	Router – the router transfers the spike data from the neuron which fires to the scheduler of the destination core.
 5)	Controller – the controller takes the spike data from the scheduler and the neuron information from the memory and starts the neuron computation. If spike occurs then it sends the spike to the router.
 
-##Modifications to the code
+## Modifications to the code
 •	The current TrueNorth chip simulator consists of random input values stored to the sram and the computation occurs. We have modified the code to get the input from a file and then store it to the SRAM memory.
 •	The inputs are supposed to be given as a spike train, but as then the file would to too big, the input is given with a spike rate. This spike rate is given to the input neurons. The code is modified to read the spike rate and fire the input neurons accordingly.
 •	The neural network connection on the chip is decided before hand. As each core can only handle 256 neurons, we need to use multiple cores for our neural network. The design of the network on the chip must be decided and given in the input file.
 •	The output spike data should be stored into a file. So that a comparison can be done with the software simulator.
 
-###Papers for phase 2
+### Papers for phase 2
 [1] Sawada, Jun, Filipp Akopyan, Andrew S. Cassidy, Brian Taba, Michael V. Debole, Pallab Datta, Rodrigo Alvarez-Icaza et al. "Truenorth ecosystem for brain-inspired computing: scalable systems, software, and applications." In SC'16: Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis, pp. 130-141. IEEE, 2016.
 
 This paper focuses on the applications of Truenorth simulator and provides an end-to-end ecosystem ( specifying, training and deploying neural networks) for both software and hardware implementation of it. It presents different layers in the ecosystem which can be used for neurosynaptic computing. It provides techniques to reduce intra and inter chip network traffic. This paper also looks into the test and verification part by comparing the duplicated copies of every normal spike with the spikes computed by the simulator to find out the discrepancy. The main principle in the paper is demonstrating two systems: the NS1e- 16 scale-out system and the NS16e scale-up system, describing a full developed workflow for the neural network algorithms along with libraries and software tools, mapping of hardware locations to logical network representations and proving deployment status of the system.
